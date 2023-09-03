@@ -18,16 +18,11 @@ from typing import Tuple
 import chex
 import jax
 import jax.numpy as jnp
-
 from jumanji import specs
 from jumanji.env import Environment
-
-from matrax.types import (
-    Observation,
-    State,
-)
-
 from jumanji.types import TimeStep, restart, termination, transition
+
+from matrax.types import Observation, State
 
 
 class MatrixGame(Environment[State]):
