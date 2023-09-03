@@ -26,26 +26,15 @@ from matrax.types import Observation, State
 
 
 class MatrixGame(Environment[State]):
-    """A JAX implementation of matrix games:
-    https://github.com/semitable/matrix-games
+    """JAX implementation of a 2-player matrix game environment:
+    https://github.com/uoe-agents/matrix-games
 
-    A matrix game is a two-player game where each player has a set of actions...
-
-    - action: jax array (int) of shape (num_agents,) containing the action for each agent.
-        (0: noop, 1: forward, 2: left, 3: right, 4: toggle_load)
-
-    - reward: jax array (int) of shape (), global reward shared by all agents, +1
-        for every successful delivery of a requested shelf to the goal position.
-
-    - episode termination:
-        - The number of steps is greater than the limit.
-
-    - state: State
-        - step_count: an integer representing the current step of the episode.
-        - key: a pseudorandom number generator key.
-
-    [1] Papoudakis et al., Benchmarking Multi-Agent Deep Reinforcement Learning Algorithms
-        in Cooperative Tasks (2021)
+    A matrix game is a two-player game where each player has a set of actions and a payoff matrix.
+    The payoff matrix is a 2D array where the rows correspond to the actions of player 1 and the
+    columns correspond to the actions of player 2. The entry at row i and column j for player 1 is
+    the reward given to player 1 when playing action i and player 2 plays action j. Similarly, the
+    entry at row i and column j for player 2 is the reward given to player 2 when playing action j
+    and player 1 plays action i.
 
     ```python
     from matrax import MatrixGame
@@ -64,9 +53,13 @@ class MatrixGame(Environment[State]):
         keep_state: bool = True,
         time_limit: int = 500,
     ):
-        """Instantiates an `RobotWarehouse` environment.
+        """Instantiates a `MatrixGame` environment.
 
         Args:
+            payoff_matrix: a 2D array of shape (num_agents, num_agents) containing the payoff
+                matrix of the game.
+            keep_state: whether to keep state by giving agents the actions of all players in
+                the previous round as observations. Defaults to True.
             time_limit: the maximum step limit allowed within the environment.
                 Defaults to 500.
         """
@@ -115,12 +108,7 @@ class MatrixGame(Environment[State]):
 
         Args:
             state: State object containing the dynamics of the environment.
-            action: Array containing the action to take.
-                - 0 no op
-                - 1 move forward
-                - 2 turn left
-                - 3 turn right
-                - 4 toggle load
+            actions: Array containing actions of each agent.
 
         Returns:
             state: State object corresponding to the next state of the environment.
@@ -179,7 +167,7 @@ class MatrixGame(Environment[State]):
         """Specification of the observation of the MatrixGame environment.
         Returns:
             Spec for the `Observation`, consisting of the fields:
-                - agent_obs: Array (int32) of shape (num_agents,).
+                - agent_obs: BoundedArray (int32) of shape (num_agents, num_agents).
                 - step_count: BoundedArray (int32) of shape ().
         """
 
@@ -197,7 +185,7 @@ class MatrixGame(Environment[State]):
         )
 
     def action_spec(self) -> specs.MultiDiscreteArray:
-        """Returns the action spec. 5 actions: [0,1,2,3,4] -> [No Op, Forward, Left, Right, Toggle_load].
+        """Returns the action spec.
         Since this is a multi-agent environment, the environment expects an array of actions.
         This array is of shape (num_agents,).
         """

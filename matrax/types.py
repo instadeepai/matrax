@@ -24,8 +24,7 @@ import chex
 
 @dataclass
 class State:
-    """A dataclass representing the state of the simulated warehouse.
-    agents: a pytree of Agent type with per agent leaves: [position, direction, is_carrying]
+    """A dataclass representing the state of the game.
     step_count: an integer representing the current step of the episode.
     key: a pseudorandom number generator key.
     """
