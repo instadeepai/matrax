@@ -19,7 +19,7 @@
 | [**Quickstart**](#quickstart)
 ---
 
-## Enter the Matrax
+## Enter the Matrax! 😎
 
 Matrax is a lightweight suite of 2-player matrix game environments written in JAX. It is a direct re-implementation of the matrix games provided in [this repository](https://github.com/uoe-agents/matrix-games) from the [AARG](https://agents.inf.ed.ac.uk/). It follows the [Jumanji](https://github.com/instadeepai/jumanji) RL environment suite API developed by [InstaDeep](https://www.instadeep.com/).
 
