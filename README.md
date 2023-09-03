@@ -7,13 +7,26 @@
 <h2 align="center">
     <p>Matrix Games in JAX</p>
 </h2>
-
-[![Python Versions](https://img.shields.io/pypi/pyversions/jumanji.svg?style=flat-square)](https://www.python.org/doc/versions/)
-<!-- [![PyPI Version](https://badge.fury.io/py/jumanji.svg)](https://badge.fury.io/py/jumanji) -->
-[![Tests](https://github.com/instadeepai/jumanji/actions/workflows/tests_linters.yml/badge.svg)](https://github.com/instadeepai/jumanji/actions/workflows/tests_linters.yml)
-[![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-<!-- [![MyPy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/) -->
-[![License](https://img.shields.io/badge/License-Apache%202.0-orange.svg)](https://opensource.org/licenses/Apache-2.0)
+<p align="center">
+    <a href="https://www.python.org/doc/versions/">
+      <img src="https://img.shields.io/pypi/pyversions/jumanji.svg?style=flat-square" alt="Python Versions">
+    </a>
+    <a href="https://badge.fury.io/py/jumanji">
+      <img src="https://badge.fury.io/py/jumanji.svg" alt="PyPI Version">
+    </a>
+    <a href="https://github.com/instadeepai/jumanji/actions/workflows/tests_linters.yml">
+      <img src="https://github.com/instadeepai/jumanji/actions/workflows/tests_linters.yml/badge.svg" alt="Tests">
+    </a>
+    <a href="https://github.com/psf/black">
+      <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style">
+    </a>
+    <a href="http://mypy-lang.org/">
+      <img src="http://www.mypy-lang.org/static/mypy_badge.svg" alt="MyPy">
+    </a>
+    <a href="https://opensource.org/licenses/Apache-2.0">
+      <img src="https://img.shields.io/badge/License-Apache%202.0-orange.svg" alt="License">
+    </a>
+</p>
 
 [**Installation**](#install)
 | [**Quickstart**](#quickstart)
