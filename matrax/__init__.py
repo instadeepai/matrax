@@ -25,7 +25,7 @@ from matrax.types import Observation, State
 # Penalty games
 for penalty_value, payoff_matrix in penalty_games.items():
     register(
-        id=f"Penalty-{penalty_value}-nostate-v0",
+        id=f"Penalty-{penalty_value}-stateless-v0",
         entry_point="matrax:MatrixGame",
         kwargs={
             "payoff_matrix": payoff_matrix,
@@ -33,7 +33,7 @@ for penalty_value, payoff_matrix in penalty_games.items():
         },
     )
     register(
-        id=f"Penalty-{penalty_value}-withstate-v0",
+        id=f"Penalty-{penalty_value}-stateful-v0",
         entry_point="matrixgames.games:MatrixGame",
         kwargs={
             "payoff_matrix": payoff_matrix,
@@ -44,7 +44,7 @@ for penalty_value, payoff_matrix in penalty_games.items():
 
 # climbing game
 register(
-    id="Climbing-nostate-v0",
+    id="Climbing-stateless-v0",
     entry_point="matrax:MatrixGame",
     kwargs={
         "payoff_matrix": climbing_game,
@@ -52,7 +52,7 @@ register(
     },
 )
 register(
-    id="Climbing-withstate-v0",
+    id="Climbing-stateful-v0",
     entry_point="matrixgames.games:MatrixGame",
     kwargs={
         "payoff_matrix": climbing_game,
@@ -64,7 +64,7 @@ register(
 # no conflict games
 for _id, payoff_matrix in no_conflict_games.items():
     register(
-        id=f"NoConflict-{_id}-nostate-v0",
+        id=f"NoConflict-{_id}-stateless-v0",
         entry_point="matrax:MatrixGame",
         kwargs={
             "payoff_matrix": payoff_matrix,
@@ -72,7 +72,7 @@ for _id, payoff_matrix in no_conflict_games.items():
         },
     )
     register(
-        id=f"NoConflict-{_id}-withstate-v0",
+        id=f"NoConflict-{_id}-stateful-v0",
         entry_point="matrixgames.games:MatrixGame",
         kwargs={
             "payoff_matrix": payoff_matrix,
@@ -84,7 +84,7 @@ for _id, payoff_matrix in no_conflict_games.items():
 # conflict games
 for _id, payoff_matrix in conflict_games.items():
     register(
-        id=f"Conflict-{_id}-nostate-v0",
+        id=f"Conflict-{_id}-stateless-v0",
         entry_point="matrax:MatrixGame",
         kwargs={
             "payoff_matrix": payoff_matrix,
@@ -92,7 +92,7 @@ for _id, payoff_matrix in conflict_games.items():
         },
     )
     register(
-        f"Conflict-{_id}-withstate-v0",
+        f"Conflict-{_id}-stateful-v0",
         entry_point="matrixgames.games:MatrixGame",
         kwargs={
             "payoff_matrix": payoff_matrix,

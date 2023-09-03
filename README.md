@@ -71,7 +71,7 @@ import jax
 import matrax
 
 # Instantiate a matrix game environment using the registry
-env = matrax.make("Penalty-25-nostate-v0")
+env = matrax.make("Penalty-25-stateless-v0")
 
 # Reset your (jit-able) environment
 key = jax.random.PRNGKey(0)
