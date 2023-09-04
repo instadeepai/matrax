@@ -42,7 +42,7 @@ setup(
     author_email="a.pretorius@instadeep.com",
     description="Matrix games in JAX",
     license="Apache 2.0",
-    url="https://github.com/instadeepai/jumanji/",
+    url="https://github.com/instadeepai/matrax/",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     keywords="matrix-games python jax",

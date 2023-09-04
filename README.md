@@ -11,8 +11,8 @@
     <a href="https://www.python.org/doc/versions/">
       <img src="https://img.shields.io/pypi/pyversions/jumanji.svg?style=flat-square" alt="Python Versions">
     </a>
-    <a href="https://badge.fury.io/py/jumanji">
-      <img src="https://badge.fury.io/py/jumanji.svg" alt="PyPI Version">
+    <a href="https://badge.fury.io/py/matrax">
+      <img src="https://badge.fury.io/py/matrax.svg" alt="PyPI version" height="18">
     </a>
     <a href="https://github.com/instadeepai/jumanji/actions/workflows/tests_linters.yml">
       <img src="https://github.com/instadeepai/jumanji/actions/workflows/tests_linters.yml/badge.svg" alt="Tests">
