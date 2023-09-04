@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="docs/matrax_logo.png">
+    <a href="docs/img/matrax_logo.png">
         <img src="docs/matrax_logo.png" alt="Matrax logo" width="50%"/>
     </a>
 </p>
