@@ -37,7 +37,7 @@
 
 </div>
 
-Matrax is a lightweight suite of [2-player matrix game](https://en.wikipedia.org/wiki/Normal-form_game) environments written in JAX. It is a direct re-implementation of the matrix games provided in [this repository](https://github.com/uoe-agents/matrix-games) from the [AARG](https://agents.inf.ed.ac.uk/). It follows the [Jumanji](https://github.com/instadeepai/jumanji) RL environment suite API developed by [InstaDeep](https://www.instadeep.com/).
+**Matrax** is a lightweight suite of [2-player matrix game](https://en.wikipedia.org/wiki/Normal-form_game) environments written in [JAX](https://github.com/google/jax). It is a direct re-implementation of the matrix games provided in [this repository](https://github.com/uoe-agents/matrix-games) from the [AARG](https://agents.inf.ed.ac.uk/). It follows the [Jumanji](https://github.com/instadeepai/jumanji) RL environment suite API developed by [InstaDeep](https://www.instadeep.com/).
 
 <h2 name="environments" id="environments">2-Player Matrix Games 🧑‍🤝‍🧑 </h2>
 
@@ -50,7 +50,7 @@ Matrax is a lightweight suite of [2-player matrix game](https://en.wikipedia.org
 
 <h2 name="install" id="install">Installation 🎬</h2>
 
-You can install the latest release of Matrax from PyPI:
+You can install the latest release of **Matrax** from PyPI:
 
 ```bash
 pip install matrax
@@ -62,7 +62,7 @@ Alternatively, you can install the latest development version directly from GitH
 pip install git+https://github.com/instadeepai/matrax.git
 ```
 
-Matrax has been tested on Python 3.8 and 3.9.
+**Matrax** has been tested on Python 3.8 and 3.9.
 Note that because the installation of JAX differs depending on your hardware accelerator,
 we advise users to explicitly install the correct JAX version (see the
 [official installation guide](https://github.com/google/jax#installation)).
@@ -87,7 +87,7 @@ state, timestep = jax.jit(env.step)(state, action)   # Take a step and observe t
 
 ### Registry and Versioning 📖
 
-Like Jumanji, Matrax keeps a strict versioning of its environments for reproducibility reasons.
+Like Jumanji, **Matrax** keeps a strict versioning of its environments for reproducibility reasons.
 We maintain a registry of standard environments with their configuration.
 For each environment, a version suffix is appended, e.g. `EnvironmentName-v1`.
 When changes are made to environments that might impact learning results,
