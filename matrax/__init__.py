@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import jax.numpy as jnp
 from jumanji.registration import make, register
 from jumanji.version import __version__
 
@@ -34,7 +33,7 @@ for penalty_value, payoff_matrix in penalty_games.items():
     )
     register(
         id=f"Penalty-{penalty_value}-stateful-v0",
-        entry_point="matrixgames.games:MatrixGame",
+        entry_point="matrax:MatrixGame",
         kwargs={
             "payoff_matrix": payoff_matrix,
             "keep_state": True,
@@ -53,7 +52,7 @@ register(
 )
 register(
     id="Climbing-stateful-v0",
-    entry_point="matrixgames.games:MatrixGame",
+    entry_point="matrax:MatrixGame",
     kwargs={
         "payoff_matrix": climbing_game,
         "keep_state": True,
@@ -73,7 +72,7 @@ for _id, payoff_matrix in no_conflict_games.items():
     )
     register(
         id=f"NoConflict-{_id}-stateful-v0",
-        entry_point="matrixgames.games:MatrixGame",
+        entry_point="matrax:MatrixGame",
         kwargs={
             "payoff_matrix": payoff_matrix,
             "keep_state": True,
@@ -93,7 +92,7 @@ for _id, payoff_matrix in conflict_games.items():
     )
     register(
         f"Conflict-{_id}-stateful-v0",
-        entry_point="matrixgames.games:MatrixGame",
+        entry_point="matrix:MatrixGame",
         kwargs={
             "payoff_matrix": payoff_matrix,
             "keep_state": True,
