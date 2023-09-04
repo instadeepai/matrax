@@ -95,7 +95,7 @@ the version number is incremented by one to prevent potential confusion.
 Other works have embraced the approach of writing RL environments in JAX.
 In particular, we suggest users check out the following sister repositories:
 
-- 🦾 [Jumanji](https://github.com/instadeepai/jumanji) is a diverse suite of scalable reinforcement learning environments.
+- 🌴 [Jumanji](https://github.com/instadeepai/jumanji) is a diverse suite of scalable reinforcement learning environments.
 - 🦾 [Brax](https://github.com/google/brax) is a differentiable physics engine that simulates
 environments made up of rigid bodies, joints, and actuators.
 - 🏋️‍ [Gymnax](https://github.com/RobertTLange/gymnax) implements classic environments including
