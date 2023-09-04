@@ -121,7 +121,8 @@ class MatrixGame(Environment[State]):
         def compute_reward(
             actions: chex.Array, payoff_matrix_per_agent: chex.Array
         ) -> chex.Array:
-            return payoff_matrix_per_agent.take(actions)
+            reward_idx = tuple(actions)
+            return payoff_matrix_per_agent[reward_idx]
 
         rewards = jax.vmap(functools.partial(compute_reward, actions))(
             self.payoff_matrix
