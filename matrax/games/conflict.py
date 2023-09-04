@@ -12,6 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Game reference:
+# -----------------
+# [1] Rapoport, A., and M. Guyer. 1966. “A Taxonomy of 2 × 2 Games.” General Systems:
+# Yearbook of the Society for General Systems Research 11:203–214.
+# [2] Albrecht SV, Ramamoorthy S. Comparative Evaluation of Multiagent Learning Algorithms
+# in a Diverse Set of Ad Hoc Team Problems. arXiv preprint arXiv:1907.09189. 2019 Jul 22.
+# https://arxiv.org/pdf/1907.09189.pdf
+
 from matrax.games.utils import convert_payoff_vector_to_matrix
 
 # 1 (7)

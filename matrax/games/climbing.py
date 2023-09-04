@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Game reference:
+# -----------------
+# Claus C, Boutilier C. The dynamics of reinforcement learning in
+# cooperative multiagent systems. AAAI/IAAI. 1998.
+# https://www.cs.toronto.edu/~cebly/Papers/_download_/multirl.pdf
+
 import jax.numpy as jnp
 
 climbing_game = jnp.array(

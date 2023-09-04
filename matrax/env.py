@@ -26,7 +26,7 @@ from matrax.types import Observation, State
 
 
 class MatrixGame(Environment[State]):
-    """JAX implementation of a 2-player matrix game environment:
+    """JAX implementation of the 2-player matrix game environment:
     https://github.com/uoe-agents/matrix-games
 
     A matrix game is a two-player game where each player has a set of actions and a payoff matrix.
