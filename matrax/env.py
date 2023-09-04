@@ -71,6 +71,9 @@ class MatrixGame(Environment[State]):
 
         self.time_limit = time_limit
 
+    def __repr__(self) -> str:
+        return f"MatrixGame(\n" f"\tpayoff_matrix={self.payoff_matrix!r},\n" ")"
+
     def reset(self, key: chex.PRNGKey) -> Tuple[State, TimeStep[Observation]]:
         """Resets the environment.
 
