@@ -13,7 +13,7 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-      - name: Checkout matrax
+      - name: Checkout matrax 😎
         uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
