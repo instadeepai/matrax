@@ -36,23 +36,22 @@ from jumanji.testing.pytrees import assert_is_jax_array_tree
 from jumanji.types import TimeStep
 
 from matrax import MatrixGame, State
+from matrax.games import climbing_game
 
 
 @pytest.fixture
 def matrix_game_env() -> MatrixGame:
     """Instantiates a default MatrixGame environment with no state."""
-    payoff_matrix = jnp.array([[1, -1], [-1, 1]])
-
-    env = MatrixGame(payoff_matrix)
+    # use climbing game for tests
+    env = MatrixGame(climbing_game, keep_state=False)
     return env
 
 
 @pytest.fixture
 def matrix_game_env_with_state() -> MatrixGame:
     """Instantiates a default MatrixGame environment that keeps state."""
-    payoff_matrix = jnp.array([[1, -1], [-1, 1]])
-
-    env = MatrixGame(payoff_matrix)
+    # use climbing game for tests
+    env = MatrixGame(climbing_game, keep_state=True)
     return env
 
 
@@ -63,7 +62,7 @@ def test_matrix_game__specs(matrix_game_env: MatrixGame) -> None:
 
     assert observation_spec.agent_obs.shape == (2, 2)  # type: ignore
     assert action_spec.num_values.shape[0] == matrix_game_env.num_agents
-    assert action_spec.num_values[0] == matrix_game_env.num_agents
+    assert action_spec.num_values[0] == matrix_game_env.num_actions
 
 
 def test_matrix_game__reset(matrix_game_env: MatrixGame) -> None:
@@ -93,12 +92,10 @@ def test_matrix_game__agent_observation(
     """Validate the agent observation function."""
     # validate starting observation
     state, timestep = matrix_game_env.reset(random.PRNGKey(0))
-    assert jnp.array_equal(
-        timestep.observation.agent_obs, jnp.array([[-1, -1], [-1, -1]])
-    )
+    assert jnp.array_equal(timestep.observation.agent_obs, jnp.array([[0, 0], [0, 0]]))
 
     # validate zero observation when not using previous actions as observations
-    state, timestep = matrix_game_env.step(state, jnp.array([0, 0]))
+    state, timestep = matrix_game_env.step(state, jnp.array([1, 0]))
     assert jnp.array_equal(timestep.observation.agent_obs, jnp.array([[0, 0], [0, 0]]))
 
     # validate starting observation when using previous actions as observations
@@ -127,7 +124,7 @@ def test_matrix_game__step(matrix_game_env_with_state: MatrixGame) -> None:
     new_state1, timestep1 = step_fn(state, action1)
 
     # Check that rewards have the correct number of dimensions
-    assert jnp.ndim(timestep1.reward) == 2
+    assert jnp.ndim(timestep1.reward) == 1
     assert jnp.ndim(timestep.reward) == 0
     # Check that discounts have the correct number of dimensions
     assert jnp.ndim(timestep1.discount) == 0
@@ -165,3 +162,29 @@ def test_matrix_game__time_limit(matrix_game_env: MatrixGame) -> None:
     assert timestep.mid()
     state, timestep = step_fn(state, jnp.array([0, 0]))
     assert timestep.last()
+
+
+def test_matrix_game__reward(matrix_game_env: MatrixGame) -> None:
+    """Validate the termination after time limit has been reached."""
+    step_fn = jax.jit(matrix_game_env.step)
+    state_key = random.PRNGKey(10)
+    state, timestep = matrix_game_env.reset(state_key)
+
+    state, timestep = step_fn(state, jnp.array([0, 0]))
+    jax.debug.print("rewards: {r}", r=timestep.reward)
+    assert jnp.array_equal(timestep.reward, jnp.array([11, 11]))
+
+    state, timestep = step_fn(state, jnp.array([1, 0]))
+    assert jnp.array_equal(timestep.reward, jnp.array([-30, -30]))
+
+    state, timestep = step_fn(state, jnp.array([0, 1]))
+    assert jnp.array_equal(timestep.reward, jnp.array([-30, -30]))
+
+    state, timestep = step_fn(state, jnp.array([1, 1]))
+    assert jnp.array_equal(timestep.reward, jnp.array([7, 7]))
+
+    state, timestep = step_fn(state, jnp.array([1, 2]))
+    assert jnp.array_equal(timestep.reward, jnp.array([0, 0]))
+
+    state, timestep = step_fn(state, jnp.array([2, 2]))
+    assert jnp.array_equal(timestep.reward, jnp.array([5, 5]))
