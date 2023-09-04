@@ -48,7 +48,7 @@ setup(
     keywords="matrix-games python jax",
     packages=setuptools.find_packages(),
     python_requires=">=3.8",
-    install_requires=_parse_requirements("requirements.txt"),
+    install_requires=_parse_requirements("requirements/requirements.txt"),
     extras_require={
         "dev": _parse_requirements("requirements/requirements-dev.txt"),
     },
