@@ -41,12 +41,12 @@ Matrax is a lightweight suite of 2-player matrix game environments written in JA
 
 <h2 name="environments" id="environments">2-Player Matrix Games 🧑‍🤝‍🧑 </h2>
 
-| Category                              | Shape (action space) | Registered Version(s)                                | Source                                                                                           | Description                                                            |
-|------------------------------------------|----------|------------------------------------------------------|--------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
-| 🔻 Penalty Game                              | 3 x 3  | `Penalty-{k}-{state}-v0`                                        | [code](https://github.com/instadeepai/matrax/blob/main/matrax/games/penalty.py)   | [doc](https://github.com/instadeepai/matrax/blob/main/docs/games/penalty.md)   |
-| 🧗‍♀️ Climbing Game                              | 3 x 3  | `Climbing-{state}-v0`                                        | [code](https://github.com/instadeepai/matrax/blob/main/matrax/games/climbing.py)   | [doc](https://github.com/instadeepai/matrax/blob/main/docs/games/climbing.md)   |
-| 🤝 No-Conflict Games                              | 2 x 2  | `NoConflict-{id}-{state}-v0`                                   | [code](https://github.com/instadeepai/matrax/blob/main/matrax/games/no_conflict.py)   | [doc](https://github.com/instadeepai/matrax/blob/main/docs/games/no_conflict.md)   |
-| 💣 Conflict Games                        | 2 x 2    | `Conflict-{id}-{state}-v0`                                     | [code](https://github.com/instadeepai/matrax/blob/main/matrax/games/conflict.py) | [doc](https://github.com/instadeepai/matrax/blob/main/docs/games/conflict.md) |
+| Category                              | Shape (action space) | Registered Version(s)                                | Source                                                                                           |
+|------------------------------------------|----------|------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| 🔻 Penalty Game                              | 3 x 3  | `Penalty-{k}-{state}-v0`                                        | [code](https://github.com/instadeepai/matrax/blob/main/matrax/games/penalty.py)   |
+| 🧗‍♀️ Climbing Game                              | 3 x 3  | `Climbing-{state}-v0`                                        | [code](https://github.com/instadeepai/matrax/blob/main/matrax/games/climbing.py)   |
+| 🤝 No-Conflict Games                              | 2 x 2  | `NoConflict-{id}-{state}-v0`                                   | [code](https://github.com/instadeepai/matrax/blob/main/matrax/games/no_conflict.py)   |
+| 💣 Conflict Games                        | 2 x 2    | `Conflict-{id}-{state}-v0`                                     | [code](https://github.com/instadeepai/matrax/blob/main/matrax/games/conflict.py) |
 
 <h2 name="install" id="install">Installation 🎬</h2>
 
