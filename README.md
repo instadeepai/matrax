@@ -26,7 +26,9 @@
     <a href="https://opensource.org/licenses/Apache-2.0">
       <img src="https://img.shields.io/badge/License-Apache%202.0-orange.svg" alt="License">
     </a>
-    <a href="https://colab.research.google.com/github/instadeepai/Mava/blob/develop/Quickstart.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+    <a href="https://colab.research.google.com/github/instadeepai/matrax/blob/feat/notebook/examples/climbing_game.ipynb" target="_parent">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+    </a>
 </div>
 </p>
 
