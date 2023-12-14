@@ -93,6 +93,19 @@ For each environment, a version suffix is appended, e.g. `EnvironmentName-v1`.
 When changes are made to environments that might impact learning results,
 the version number is incremented by one to prevent potential confusion.
 
+## Citing Matrax 📝
+If you use any of the environment implementations in Matrax please consider citing this library.
+
+```
+@software{matrax2023github,
+  author = {Arnu Pretorius},
+  title = {Matrax: Matrix Games in JAX},
+  url = {http://github.com/instadeepai/matrax},
+  version = {v0.0.4-alpha},
+  year = {2023},
+}
+```
+
 ## See Also 🔎
 
 Other works have embraced the approach of writing RL environments in JAX.
