@@ -21,9 +21,8 @@ from jumanji.testing.env_not_smoke import check_env_does_not_smoke
 from jumanji.testing.pytrees import assert_is_jax_array_tree
 from jumanji.types import TimeStep
 
-from matrax.env import MatrixGame
+from matrax import MatrixGame, State
 from matrax.games import climbing_game
-from matrax.types import State
 
 
 @pytest.fixture

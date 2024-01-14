@@ -12,9 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from jumanji.registration import register
+from jumanji.registration import make, register
+from jumanji.version import __version__
 
+from matrax.env import MatrixGame
 from matrax.games import climbing_game, conflict_games, no_conflict_games, penalty_games
+from matrax.types import Observation, State
 
 """Environment Registration"""
 
