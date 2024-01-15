@@ -92,7 +92,7 @@ for _id, payoff_matrix in conflict_games.items():
     )
     register(
         f"Conflict-{_id}-stateful-v0",
-        entry_point="matrix:MatrixGame",
+        entry_point="matrax:MatrixGame",
         kwargs={
             "payoff_matrix": payoff_matrix,
             "keep_state": True,
