@@ -9,13 +9,13 @@
 </h2>
 <p align="center">
     <a href="https://www.python.org/doc/versions/">
-      <img src="https://img.shields.io/pypi/pyversions/jumanji.svg?style=flat-square" alt="Python Versions">
+      <img src="https://img.shields.io/badge/python-3.9-blue" alt="Python Versions">
     </a>
     <a href="https://badge.fury.io/py/matrax">
       <img src="https://badge.fury.io/py/matrax.svg" alt="PyPI version" height="18">
     </a>
-    <a href="https://github.com/instadeepai/jumanji/actions/workflows/tests_linters.yml">
-      <img src="https://github.com/instadeepai/jumanji/actions/workflows/tests_linters.yml/badge.svg" alt="Tests">
+    <a href="https://github.com/instadeepai/matrax/actions/workflows/tests_linters.yml">
+      <img src="https://github.com/instadeepai/matrax/actions/workflows/tests_linters.yml/badge.svg" alt="Tests">
     </a>
     <a href="https://github.com/psf/black">
       <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style">
@@ -62,7 +62,7 @@ Alternatively, you can install the latest development version directly from GitH
 pip install git+https://github.com/instadeepai/matrax.git
 ```
 
-**Matrax** has been tested on Python 3.8 and 3.9.
+**Matrax** has been tested on Python 3.9.
 Note that because the installation of JAX differs depending on your hardware accelerator,
 we advise users to explicitly install the correct JAX version (see the
 [official installation guide](https://github.com/google/jax#installation)).
