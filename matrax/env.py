@@ -99,7 +99,7 @@ class MatrixGame(Environment[State]):
             agent_obs=agent_obs,
             step_count=state.step_count,
         )
-        timestep = restart(observation=observation)
+        timestep = restart(observation=observation, shape=self.num_agents)
         return state, timestep
 
     def step(
@@ -122,7 +122,7 @@ class MatrixGame(Environment[State]):
             actions: chex.Array, payoff_matrix_per_agent: chex.Array
         ) -> chex.Array:
             reward_idx = tuple(actions)
-            return payoff_matrix_per_agent[reward_idx]
+            return payoff_matrix_per_agent[reward_idx].astype(float)
 
         rewards = jax.vmap(functools.partial(compute_reward, actions))(
             self.payoff_matrix
@@ -143,10 +143,12 @@ class MatrixGame(Environment[State]):
 
         timestep = jax.lax.cond(
             done,
-            termination,
-            transition,
-            rewards,
-            next_observation,
+            lambda: termination(
+                reward=rewards, observation=next_observation, shape=self.num_agents
+            ),
+            lambda: transition(
+                reward=rewards, observation=next_observation, shape=self.num_agents
+            ),
         )
 
         # create environment state
