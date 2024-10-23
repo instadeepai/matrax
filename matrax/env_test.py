@@ -43,8 +43,8 @@ def matrix_game_env_with_state() -> MatrixGame:
 
 def test_matrix_game__specs(matrix_game_env: MatrixGame) -> None:
     """Validate environment specs conform to the expected shapes and values"""
-    action_spec = matrix_game_env.action_spec()
-    observation_spec = matrix_game_env.observation_spec()
+    action_spec = matrix_game_env.action_spec
+    observation_spec = matrix_game_env.observation_spec
 
     assert observation_spec.agent_obs.shape == (2, 2)  # type: ignore
     assert action_spec.num_values.shape[0] == matrix_game_env.num_agents
