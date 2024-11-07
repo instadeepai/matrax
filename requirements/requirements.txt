@@ -1,1 +1,1 @@
-jumanji==1.0.1
+jumanji
