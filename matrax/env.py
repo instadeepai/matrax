@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import functools
+from functools import cached_property, partial
 from typing import Tuple
 
 import chex
@@ -25,7 +25,7 @@ from jumanji.types import TimeStep, restart, termination, transition
 from matrax.types import Observation, State
 
 
-class MatrixGame(Environment[State]):
+class MatrixGame(Environment[State, specs.MultiDiscreteArray, Observation]):
     """JAX implementation of the 2-player matrix game environment:
     https://github.com/uoe-agents/matrix-games
 
@@ -42,7 +42,7 @@ class MatrixGame(Environment[State]):
     env = MatrixGame(payoff_matrix)
     key = jax.random.PRNGKey(0)
     state, timestep = jax.jit(env.reset)(key)
-    action = env.action_spec().generate_value()
+    action = env.action_spec.generate_value()
     state, timestep = jax.jit(env.step)(state, action)
     ```
     """
@@ -92,9 +92,9 @@ class MatrixGame(Environment[State]):
         dummy_actions = jnp.ones((self.num_agents,), int) * -1
 
         # collect first observations and create timestep
-        agent_obs = jax.vmap(
-            functools.partial(self._make_agent_observation, dummy_actions)
-        )(jnp.arange(self.num_agents))
+        agent_obs = jax.vmap(partial(self._make_agent_observation, dummy_actions))(
+            jnp.arange(self.num_agents)
+        )
         observation = Observation(
             agent_obs=agent_obs,
             step_count=state.step_count,
@@ -124,16 +124,14 @@ class MatrixGame(Environment[State]):
             reward_idx = tuple(actions)
             return payoff_matrix_per_agent[reward_idx].astype(float)
 
-        rewards = jax.vmap(functools.partial(compute_reward, actions))(
-            self.payoff_matrix
-        )
+        rewards = jax.vmap(partial(compute_reward, actions))(self.payoff_matrix)
 
         # construct timestep and check environment termination
         steps = state.step_count + 1
         done = steps >= self.time_limit
 
         # compute next observation
-        agent_obs = jax.vmap(functools.partial(self._make_agent_observation, actions))(
+        agent_obs = jax.vmap(partial(self._make_agent_observation, actions))(
             jnp.arange(self.num_agents)
         )
         next_observation = Observation(
@@ -169,6 +167,7 @@ class MatrixGame(Environment[State]):
             lambda: jnp.zeros(self.num_agents, int),
         )
 
+    @cached_property
     def observation_spec(self) -> specs.Spec[Observation]:
         """Specification of the observation of the MatrixGame environment.
         Returns:
@@ -190,6 +189,7 @@ class MatrixGame(Environment[State]):
             step_count=step_count,
         )
 
+    @cached_property
     def action_spec(self) -> specs.MultiDiscreteArray:
         """Returns the action spec.
         Since this is a multi-agent environment, the environment expects an array of actions.
